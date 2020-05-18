@@ -1,6 +1,8 @@
 $(document).ready(function () {
-    $("button").on("click", function () {
-        $("#gifButtonDiv").empty()
+    $("#clearButton").hide();
+    $(".categoryButton").on("click", function () {
+        $("#gifButtonDiv").empty();
+        $("#clearButton").show();
         var topics = $(this).attr("data-topics");
 
         var giphy = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=TtNtOrejgWgfo7u3qG8DWCOjxAafwZqn";
@@ -26,5 +28,10 @@ $(document).ready(function () {
                     gifButtonDiv.append(topicImage);
                 };
             });
-    });
+        });
+
+        $("#clearButton").on("click", function(){
+            $("#gifButtonDiv").empty();
+        });
+    
 });
