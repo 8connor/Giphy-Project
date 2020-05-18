@@ -1,34 +1,30 @@
 $(document).ready(function () {
+    $("button").on("click", function () {
+        $("#gifButtonDiv").empty()
+        var topics = $(this).attr("data-topics");
 
-    var topics = ["Motorcycles",
-        "cats",
-        "cars",
-        "computers",
-    ]
+        var giphy = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=TtNtOrejgWgfo7u3qG8DWCOjxAafwZqn";
 
-    var topics1 = "";
-    
-    var giphy = "https://api.giphy.com/v1/gifs/search?q=" + topics1 + "&api_key=TtNtOrejgWgfo7u3qG8DWCOjxAafwZqn";
-   
+        $.ajax(
+            {
+                url: giphy,
+                method: "GET",
+            })
+            .then(function (response) {
 
-    $.ajax(
-    {
-        url: giphy,
-        method: "GET",
-    })
-    .then(function (response) 
-    {
-        for (var i = 0; i < topics.length; i++) {
-            topics1 = topics[i]
-            var gifButton = $("button");
-            var headerButtons = $(".buttons");
+                var results = response.data;
 
-            gifButton.html(topics[i]).appendTo(headerButtons);
+                console.log(response);
 
-        }
+                for (var i = 0; i < results.length; i++) {
+                    var gifButtonDiv = $("#gifButtonDiv");
+
+                    var topicImage = $("<img>");
+
+                    topicImage.attr("src", results[i].images.fixed_height.url);
+
+                    gifButtonDiv.append(topicImage);
+                };
+            });
     });
-
-
-
-
 });
