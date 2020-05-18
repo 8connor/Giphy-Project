@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    $("form").on("submit", function(){
+        return false;
+    });
+
     $("#clearButton").hide();
     $(".categoryButton").on("click", function () {
         $("#gifButtonDiv").empty();
@@ -23,9 +27,17 @@ $(document).ready(function () {
 
                     var topicImage = $("<img>");
 
+                    var rating = results[i].rating;
+
+                    var p = $("<p>").text("Rating: " + rating);
+
+                    var div = $("<div>");
+
                     topicImage.attr("src", results[i].images.fixed_height.url);
 
-                    gifButtonDiv.append(topicImage);
+                    gifButtonDiv.append(div);
+                    div.append(p)
+                    div.append(topicImage);
                 };
             });
         });
@@ -34,5 +46,15 @@ $(document).ready(function () {
             $("#gifButtonDiv").empty();
             $(this).hide();
         });
+
+        $("#submitButton").on("click", function(){
+            var searchTerm = $("#addButton").val().trim();
+
+            
+
+
+        });
+
+        
     
 });
