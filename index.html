@@ -12,14 +12,16 @@
 
 <body class="content">
     <div id="userInput">
-        <button type="button" class="categoryButton" data-topics="cats">cats</button>
-        <button type="button" class="categoryButton" data-topics="cars">cars</button>
-        <button type="button" class="categoryButton" data-topics="motorcycles">motorcycles</button>
+        <div class="buttons">
+            <button type="button" class="categoryButton" data-topics="cats">cats</button>
+            <button type="button" class="categoryButton" data-topics="cars">cars</button>
+            <button type="button" class="categoryButton" data-topics="motorcycles">motorcycles</button>
+        </div>
         <button type="button" id="clearButton">clear</button>
         <form id="search">
             <label for="addButton">add a new button:</label>
-            <input type="text" id="addButton" name="addButton">
-            <input type="submit" name="addButton" id="submitButton">
+            <input type="text" name="addButton" id='userSearch'>
+            <input type="submit" name="addButton" id="addButton">
         </form>
     </div>
     <article id="gifButtonDiv">
